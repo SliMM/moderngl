@@ -1,4 +1,5 @@
 #include "Types.hpp"
+#include<iostream>
 
 static int float_base_format[5] = {0, GL_RED, GL_RG, GL_RGB, GL_RGBA};
 static int int_base_format[5] = {0, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_RGBA_INTEGER};
@@ -12,6 +13,10 @@ static int u4_internal_format[5] = {0, GL_R32UI, GL_RG32UI, GL_RGB32UI, GL_RGBA3
 static int i1_internal_format[5] = {0, GL_R8I, GL_RG8I, GL_RGB8I, GL_RGBA8I};
 static int i2_internal_format[5] = {0, GL_R16I, GL_RG16I, GL_RGB16I, GL_RGBA16I};
 static int i4_internal_format[5] = {0, GL_R32I, GL_RG32I, GL_RGB32I, GL_RGBA32I};
+static int U1_internal_format[5] = {0, GL_R8, GL_RG8, GL_RGB8, GL_RGBA8};
+static int U2_internal_format[5] = {0, GL_R16, GL_RG16, GL_RGB16, GL_RGBA16};
+static int I1_internal_format[5] = {0, GL_R8_SNORM, GL_RG8_SNORM, GL_RGB8_SNORM, GL_RGBA8_SNORM};
+static int I2_internal_format[5] = {0, GL_R16_SNORM, GL_RG16_SNORM, GL_RGB16_SNORM, GL_RGBA16_SNORM};
 
 static MGLDataType f1 = {float_base_format, f1_internal_format, GL_UNSIGNED_BYTE, 1};
 static MGLDataType f2 = {float_base_format, f2_internal_format, GL_HALF_FLOAT, 2};
@@ -22,6 +27,11 @@ static MGLDataType u4 = {int_base_format, u4_internal_format, GL_UNSIGNED_INT, 4
 static MGLDataType i1 = {int_base_format, i1_internal_format, GL_BYTE, 1};
 static MGLDataType i2 = {int_base_format, i2_internal_format, GL_SHORT, 2};
 static MGLDataType i4 = {int_base_format, i4_internal_format, GL_INT, 4};
+
+static MGLDataType U1 = {float_base_format, U1_internal_format, GL_UNSIGNED_BYTE, 1};
+static MGLDataType U2 = {float_base_format, U2_internal_format, GL_UNSIGNED_SHORT, 2};
+static MGLDataType I1 = {float_base_format, I1_internal_format, GL_UNSIGNED_BYTE, 1};
+static MGLDataType I2 = {float_base_format, I2_internal_format, GL_UNSIGNED_SHORT, 2};
 
 MGLDataType * from_dtype(const char * dtype) {
 	if (!dtype[0] || (dtype[1] && dtype[2])) {
@@ -55,6 +65,18 @@ MGLDataType * from_dtype(const char * dtype) {
 
 		case ('i' * 256 + '4'):
 			return &i4;
+
+		case ('U' * 256 + '1'):
+			return &U1;
+
+		case ('U' * 256 + '2'):
+			return &U2;
+
+		case ('I' * 256 + '1'):
+			return &I1;
+
+		case ('I' * 256 + '2'):
+			return &I2;
 
 		default:
 			return 0;

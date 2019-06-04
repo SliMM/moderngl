@@ -222,7 +222,7 @@ setup(
     license='MIT',
     classifiers=classifiers,
     keywords=keywords,
-    packages=['moderngl', 'moderngl.program_members'],
+    packages=['moderngl', 'moderngl.program_members', 'moderngl.new'],
     ext_modules=[mgl],
     platforms=['any'],
 )

@@ -226,6 +226,10 @@ PyObject * PyInit_mgl_new() {
     i1.numpy_dtype = intern(PyUnicode_FromString("i1"));
     i2.numpy_dtype = intern(PyUnicode_FromString("i2"));
     i4.numpy_dtype = intern(PyUnicode_FromString("i4"));
+    U1.numpy_dtype = intern(PyUnicode_FromString("U1"));
+    U2.numpy_dtype = intern(PyUnicode_FromString("U2"));
+    I1.numpy_dtype = intern(PyUnicode_FromString("I1"));
+    I2.numpy_dtype = intern(PyUnicode_FromString("I2"));
 
     return module;
 }

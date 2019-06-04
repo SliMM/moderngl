@@ -22,5 +22,9 @@ extern MGLDataType i4;
 extern MGLDataType d2;
 extern MGLDataType d3;
 extern MGLDataType d4;
+extern MGLDataType U1;
+extern MGLDataType U2;
+extern MGLDataType I1;
+extern MGLDataType I2;
 
 MGLDataType * from_dtype(PyObject * dtype);

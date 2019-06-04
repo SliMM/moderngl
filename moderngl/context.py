@@ -170,7 +170,7 @@ class Context:
             This property is write only
 
             Example::
-                
+
                 ctx.provoking_vertex = moderngl.FIRST_VERTEX_CONVENTION
         '''
         raise NotImplementedError()

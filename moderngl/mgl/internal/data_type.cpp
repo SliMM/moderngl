@@ -2,6 +2,18 @@
 
 #include "opengl/opengl.hpp"
 
+#include<iostream>
+
+
+MGLDataType x2 = {
+    NULL,
+    {0, GL_RED, GL_RG, GL_RGB, GL_RGBA},
+    {0, GL_R16, GL_RG16, GL_RGB16, GL_RGBA16},
+    GL_UNSIGNED_SHORT,
+    2,
+    'x',
+};
+
 MGLDataType f1 = {
     NULL,
     {0, GL_RED, GL_RG, GL_RGB, GL_RGBA},
@@ -110,6 +122,42 @@ MGLDataType d4 = {
     'd',
 };
 
+MGLDataType U1 = {
+    NULL,
+    {0, GL_RED, GL_RG, GL_RGB, GL_RGBA},
+    {0, GL_R8, GL_RG8, GL_RGB8, GL_RGBA8},
+    GL_UNSIGNED_BYTE,
+    1,
+    'U',
+};
+
+MGLDataType U2 = {
+    NULL,
+    {0, GL_RED, GL_RG, GL_RGB, GL_RGBA},
+    {0, GL_R16, GL_RG16, GL_RGB16, GL_RGBA16},
+    GL_UNSIGNED_SHORT,
+    2,
+    'U',
+};
+
+MGLDataType I1 = {
+    NULL,
+    {0, GL_RED, GL_RG, GL_RGB, GL_RGBA},
+    {0, GL_R8_SNORM, GL_RG8_SNORM, GL_RGB8_SNORM, GL_RGBA8_SNORM},
+    GL_BYTE,
+    1,
+    'I',
+};
+
+MGLDataType I2 = {
+    NULL,
+    {0, GL_RED, GL_RG, GL_RGB, GL_RGBA},
+    {0, GL_R16_SNORM, GL_RG16_SNORM, GL_RGB16_SNORM, GL_RGBA16_SNORM},
+    GL_SHORT,
+    2,
+    'I',
+};
+
 MGLDataType * from_dtype(PyObject * dtype) {
     if (PyUnicode_Check(dtype) && PyUnicode_GET_LENGTH(dtype) == 2) {
         short * code = (short *)PyUnicode_AsUTF8(dtype);
@@ -149,6 +197,18 @@ MGLDataType * from_dtype(PyObject * dtype) {
 
             case 'd' | '4' << 8:
                 return &d4;
+
+            case 'U' | '1' << 8:
+                return &U1;
+
+            case 'U' | '2' << 8:
+                return &U2;
+
+            case 'I' | '1' << 8:
+                return &I1;
+
+            case 'I' | '2' << 8:
+                return &I2;
         }
     }
     return NULL;
